@@ -1,5 +1,5 @@
-import { Pit } from '../Pit';
-import { useGameStore } from '../gameStore';
+import { Pit } from './Pit';
+import { useGameStore } from '../store/gameStore';
 import { positions } from '../positions';
 import { toKey } from '../utils/toKey';
 

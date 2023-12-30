@@ -1,14 +1,21 @@
-import { useGameStore } from './gameState';
-import { Position } from './positions';
-import { Pearl } from './pearl';
+import { GameStoreState, useGameStore } from '../store/gameStore';
+import { Position } from '../positions';
+import { Pearl } from './Pearl';
 
 export const Pit = ({ position }: { position: Position }) => {
-  const { appendRemoved, selectedPearlPosition, setSelectedPearl, boardState, setBoardState } =
-    useGameStore();
+  const {
+    appendRemoved,
+    selectedPearlPosition,
+    setSelectedPearl,
+    boardState,
+    previousState,
+    setBoardState,
+    setPreviousState,
+    pearlsRemoved,
+  } = useGameStore();
   const keyPosition = JSON.stringify(position);
 
   const handleClick = () => {
-    console.log('click pit')
     const content = boardState.get(keyPosition);
     if (content) return;
     if (!selectedPearlPosition) return;
@@ -19,23 +26,28 @@ export const Pit = ({ position }: { position: Position }) => {
     const movementY = y0 - y1;
     const distanceX = Math.abs(movementX);
     const distanceY = Math.abs(movementY);
-    //if distance is not 2, then it's not a valid move
     if (movementX && movementY) return; //move only in one direction
     if (distanceX !== 2 && distanceY !== 2) return;
-    // if (distance !== 2) return;
-    //if there is no pearl in between, then it's not a valid move
-    const inBetweenPosition = JSON.stringify({
+
+    const positionInBetween = JSON.stringify({
       x: x0 - movementX / 2,
       y: y0 - movementY / 2,
     });
-    const inBetweenPearl = boardState.get(inBetweenPosition);
-    console.log('inBetween', inBetweenPearl);
-    if (!inBetweenPearl) return;
-    //TODO: remove pearl in between
-    console.log('remove pearl at ', inBetweenPosition)
-    appendRemoved(inBetweenPearl)
-    boardState.set(inBetweenPosition, null);
+    const pearlInBetween = boardState.get(positionInBetween);
+    if (!pearlInBetween) return;
 
+    //TODO: method deepCopy
+    const currentGameState: GameStoreState = {
+      boardState: new Map([...boardState.entries()]),
+      pearlsRemoved: [...pearlsRemoved],
+      selectedPearlPosition: null,
+      previousState,
+      nextState: null,
+    };
+    setPreviousState(currentGameState);
+    pearlInBetween.props.position = undefined
+    appendRemoved(pearlInBetween);
+    boardState.set(positionInBetween, null);
     boardState.set(keyPosition, <Pearl position={position} />);
     boardState.set(JSON.stringify(selectedPearlPosition), null);
 

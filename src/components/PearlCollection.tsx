@@ -1,6 +1,6 @@
-import { useGameStore } from '../gameStore';
+import { useGameStore } from '../store/gameStore';
 
 export const PearlCollection = () => {
   const { pearlsRemoved } = useGameStore();
-  return <div className="removals">{pearlsRemoved.map((pearl) => pearl)}</div>;
+  return <div className="collection">{pearlsRemoved.map((pearl) => pearl)}</div>;
 };

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -17,15 +19,16 @@
   --color-wood: #cdaa7d;
   --color-wood-dark: #8b6914;
   --board-width: min(95vw, 450px);
+  --pearl-size: calc(var(--board-width) / 7 - 7%);
 }
 
 body {
   margin: 0;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   min-height: 100vh;
   max-height: 100vh;
+  max-height: 100dvh;
 }
 * {
   box-sizing: border-box;
@@ -36,21 +39,9 @@ body {
   margin: 0 auto;
   text-align: center;
   gap: 1rem;
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 0.5rem;
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
   grid-template-rows: 1fr repeat(2, 50px);
-}
-
-img:hover {
-  filter: drop-shadow(0 0 2em #673ab8aa);
-}
-
-@media (max-width: 639px) {
-  #app {
-    /* margin: 2rem; */
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +51,18 @@ img:hover {
   }
 }
 
+header {
+  position: absolute;
+  left: 20px;
+  & h1 {
+    font-family: 'Herr Von Muellerhoff', cursive;
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    color: var(--color-pearl);
+  }
+}
 .board {
   /* flex: 1; */
   align-self: center;
@@ -79,7 +82,6 @@ img:hover {
 }
 
 .pit {
-  /* border: 1px solid beige; */
   border-radius: 50%;
   width: 100%;
   aspect-ratio: 1;
@@ -90,16 +92,9 @@ img:hover {
   box-shadow: inset 4px 4px 5px 2px var(--color-wood-dark);
 }
 
-.removals {
+.collection {
   --pearl-size: calc(var(--board-width) / 7 - 6%);
   pointer-events: none;
-  /* min-height: var(--pearl-size); */
-  /* grid-column: 1 / span 7;
-  grid-row: 2; */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, --pearl-size); */
-  /* grid-auto-columns: calc(450px / 7 - 2rem); */
-  /* justify-content: space-evenly; */
   align-items: flex-start;
   padding: 4px;
   gap: 4px;
@@ -113,12 +108,6 @@ img:hover {
     flex: 0 0 var(--pearl-size);
     width: var(--pearl-size);
     max-width: var(--pearl-size);
-    /* flex: 1; */
     aspect-ratio: 1;
-    /* height: 1.5rem;
-    width: 1.5rem; */
-    /* border: 1px solid beige; */
-    /* border-radius: 50%; */
-    /* box-shadow: inset -3px -3px 7px 4px var(--color-pearl-dark); */
   }
 }

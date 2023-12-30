@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'preact/hooks';
-// import boardState from './boardState';
-import { useGameStore } from './gameState';
+import { useGameStore } from '../store/gameStore';
+import { Position } from '../positions';
 import styles from './pearl.module.css';
-import { Position } from './positions';
 
-export const Pearl = ({ position }: { position: Position }) => {
-  const { setSelectedPearl, selectedPearlPosition: selectedPearl } = useGameStore();
+export const Pearl = ({ position }: { position?: Position }) => {
+  const { setSelectedPearl, selectedPearlPosition: selectedPearl } =
+    useGameStore();
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = () => {
@@ -22,5 +22,12 @@ export const Pearl = ({ position }: { position: Position }) => {
     }
   }, [selectedPearl]);
 
-  return <div tabIndex={1} style={{border: isSelected? '1px solid' : undefined}} onClick={handleClick} className={styles.pearl} />;
+  return (
+    <div
+      tabIndex={1}
+      style={{ border: isSelected ? '1px solid' : undefined }}
+      onClick={handleClick}
+      className={styles.pearl}
+    />
+  );
 };

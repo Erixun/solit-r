@@ -26,8 +26,7 @@ export const getValidPositions = (positions: Position[]) => {
 
 export const validPositions = getValidPositions(positions);
 
-export function isValidPosition(position: Position) {
-  const { x, y } = position;
+export function isValidPosition({ x, y }: Position) {
   const isUpperLeft = x < -1 && y > 1;
   const isUpperRight = x > 1 && y > 1;
   const isLowerLeft = x < -1 && y < -1;

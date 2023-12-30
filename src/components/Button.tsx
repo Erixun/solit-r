@@ -1,17 +1,20 @@
-export const Button = ({ label, disabled, onClick }: ButtonProps) => {
+import { ReactNode } from "preact/compat";
+
+export const Button = ({ label, disabled, onClick, children }: ButtonProps) => {
   return (
     <button
       disabled={disabled}
       onClick={onClick}
       style={{ fontSize: '1rem', height: 46, width: 100, flex: 1 }}
     >
-      {label}
+      {label || children}
     </button>
   );
 };
 
 export type ButtonProps = {
-  label: string;
+  label?: string;
   disabled: boolean;
   onClick: () => void;
+  children?: ReactNode;
 };

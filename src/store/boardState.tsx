@@ -1,8 +1,8 @@
 import { JSX } from 'preact/jsx-runtime';
-import { Pearl } from './pearl';
-import { Position, validPositions } from './positions';
+import { Pearl } from '../components/Pearl';
+import { validPositions } from '../positions';
 
-export const getDefaultBoardState = () => {
+export const getInitialBoardState = () => {
   const boardState = new Map<string, JSX.Element | null>();
 
   validPositions.forEach((position) => {
@@ -14,7 +14,9 @@ export const getDefaultBoardState = () => {
   return boardState;
 };
 
-export const generateBoardState = (entries: [string, JSX.Element | null][]) => {
+export const initialBoardState = getInitialBoardState();
+
+export const toBoardState = (entries: [string, JSX.Element | null][]) => {
   const boardState = new Map<string, JSX.Element | null>();
 
   entries.forEach(([key, value]) => {
@@ -23,3 +25,9 @@ export const generateBoardState = (entries: [string, JSX.Element | null][]) => {
 
   return boardState;
 };
+
+export const toEntries = (boardState: Map<string, JSX.Element | null>) => {
+  return [...boardState.entries()];
+};
+
+export const initialGameState = toEntries(initialBoardState);

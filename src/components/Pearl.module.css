@@ -2,5 +2,6 @@
   background-color: var(--color-pearl);
   border-radius: 50%;
   box-shadow: inset -3px -3px 7px 4px var(--color-pearl-dark);
+  width: var(--pearl-size);
   aspect-ratio: 1;
 }

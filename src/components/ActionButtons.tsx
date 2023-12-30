@@ -1,4 +1,4 @@
-import { useGameStore } from '../gameStore';
+import { useGameStore } from '../store/gameStore';
 import { Button } from './Button';
 
 export const ActionButtons = () => {
