@@ -2,8 +2,5 @@
   background-color: var(--color-pearl);
   border-radius: 50%;
   box-shadow: inset -3px -3px 7px 4px var(--color-pearl-dark);
-  flex: 1;
   aspect-ratio: 1;
-  /* height: 1.5rem;
-  width: 1.5rem; */
 }
