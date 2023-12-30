@@ -14,3 +14,12 @@ export const getDefaultBoardState = () => {
   return boardState;
 };
 
+export const generateBoardState = (entries: [string, JSX.Element | null][]) => {
+  const boardState = new Map<string, JSX.Element | null>();
+
+  entries.forEach(([key, value]) => {
+    boardState.set(key, value);
+  });
+
+  return boardState;
+};
