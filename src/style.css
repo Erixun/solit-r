@@ -94,7 +94,6 @@ header {
 }
 
 .collection {
-  --pearl-size: calc(var(--board-width) / 7 - 6%);
   pointer-events: none;
   align-items: flex-start;
   padding: 4px;
