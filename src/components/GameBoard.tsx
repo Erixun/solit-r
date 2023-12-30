@@ -1,6 +1,6 @@
 import { Pit } from './Pit';
 import { useGameStore } from '../store/gameStore';
-import { positions } from '../positions';
+import { positions } from '../utils/positions';
 import { toKey } from '../utils/toKey';
 
 export const GameBoard = () => {

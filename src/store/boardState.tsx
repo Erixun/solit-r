@@ -1,6 +1,6 @@
 import { JSX } from 'preact/jsx-runtime';
 import { Pearl } from '../components/Pearl';
-import { validPositions } from '../positions';
+import { validPositions } from '../utils/positions';
 
 export const getInitialBoardState = () => {
   const boardState = new Map<string, JSX.Element | null>();

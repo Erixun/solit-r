@@ -1,6 +1,6 @@
 import { JSX } from 'preact/jsx-runtime';
 import { create } from 'zustand';
-import { Position } from '../positions';
+import { Position } from '../utils/positions';
 import { initialBoardState, getInitialBoardState } from './boardState';
 
 export const useGameStore = create<GameStore>((set, get) => ({

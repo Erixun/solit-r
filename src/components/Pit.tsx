@@ -1,5 +1,5 @@
 import { GameStoreState, useGameStore } from '../store/gameStore';
-import { Position } from '../positions';
+import { Position } from '../utils/positions';
 import { Pearl } from './Pearl';
 
 export const Pit = ({ position }: { position: Position }) => {
