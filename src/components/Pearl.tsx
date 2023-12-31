@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { useGameStore } from '../store/gameStore';
 import { Position } from '../utils/positions';
-import styles from './pearl.module.css';
+import styles from './Pearl.module.css';
 
 export const Pearl = ({ position }: { position?: Position }) => {
   const { setSelectedPearl, selectedPearlPosition: selectedPearl } =
