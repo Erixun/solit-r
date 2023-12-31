@@ -1,11 +1,17 @@
-import { ReactNode } from "preact/compat";
+import { ReactNode } from 'preact/compat';
 
 export const Button = ({ label, disabled, onClick, children }: ButtonProps) => {
   return (
     <button
       disabled={disabled}
       onClick={onClick}
-      style={{ fontSize: '1rem', height: 46, width: 100, flex: 1 }}
+      style={{
+        fontSize: 16,
+        height: 46,
+        width: 100,
+        flex: 1,
+        // touchAction: 'none',
+      }}
     >
       {label || children}
     </button>

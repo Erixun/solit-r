@@ -20,14 +20,16 @@
   --color-wood: #cdaa7d;
   --color-wood-dark: #8b6914;
   --board-width: min(95vw, 450px);
-  --pearl-size: calc(var(--board-width) / 7 - 7%);
+  --pearl-size: calc(var(--board-width) / 7 - 5%);
 }
 
 body {
+  touch-action: pan-x pan-y;
   margin: 0;
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100dvh;
   max-height: 100vh;
   max-height: 100dvh;
 }
@@ -70,16 +72,21 @@ header {
   padding: 2rem;
   box-sizing: border-box;
   display: grid;
+  align-self: center;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: 1fr;
-  grid-gap: 1rem;
-  grid-gap: 3%;
+  /* grid-auto-rows: 1fr; */
+  /* grid-gap: 1rem;
+  grid-gap: 3%; */
+  row-gap: 0;
+  column-gap: 0;
+  gap: 1%;
   aspect-ratio: 1;
   border: 1px solid beige;
   background: var(--color-wood);
   border-radius: 50%;
   width: var(--board-width);
   max-width: var(--board-width);
+  max-height: var(--board-width);
 }
 
 .pit {
