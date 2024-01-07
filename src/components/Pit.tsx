@@ -15,6 +15,7 @@ export const Pit = ({ position }: { position: Position }) => {
   } = useGameStore();
   const keyPosition = JSON.stringify(position);
 
+  //TODO: move this somewhere else...
   const handleClick = () => {
     const content = boardState.get(keyPosition);
     if (content) return;
@@ -45,7 +46,7 @@ export const Pit = ({ position }: { position: Position }) => {
       nextState: null,
     };
     setPreviousState(currentGameState);
-    pearlInBetween.props.position = undefined
+    pearlInBetween.props.position = undefined;
     appendRemoved(pearlInBetween);
     boardState.set(positionInBetween, null);
     boardState.set(keyPosition, <Pearl position={position} />);
@@ -53,11 +54,18 @@ export const Pit = ({ position }: { position: Position }) => {
 
     setBoardState(boardState);
     setSelectedPearl(position);
+
+    const audio = new Audio('/move-self.mp3');
+    audio.play();
   };
 
+  const pearl = boardState.get(keyPosition);
+  if (pearl && !pearl.props.position) {
+    pearl.props.position = position;
+  }
   return (
     <div className="pit" tabIndex={null} onClick={handleClick}>
-      {boardState.get(keyPosition)}
+      {pearl}
     </div>
   );
 };
