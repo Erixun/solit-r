@@ -1,10 +1,11 @@
 .pearl {
   box-sizing: content-box;
   background-color: var(--color-pearl);
-  /* border: 1px solid transparent; */
   border-radius: 50%;
   box-shadow: inset -3px -3px 7px 4px var(--color-pearl-dark);
-  /* filter: drop-shadow(0 0 1px var(--color-pearl-dark)); */
   width: var(--pearl-size);
   aspect-ratio: 1;
+}
+.pearl[data-selected='true'] {
+  outline: 2px solid black;
 }

@@ -25,7 +25,7 @@ export const Pearl = ({ position }: { position?: Position }) => {
   return (
     <div
       tabIndex={1}
-      style={{ outline: isSelected ? '2px solid black' : undefined }}
+      data-selected={isSelected}
       onClick={handleClick}
       className={styles.pearl}
     />
